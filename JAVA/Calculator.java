@@ -11,7 +11,7 @@ public class Calculator implements ActionListener {
 	JButton[] functionButtons = new JButton[8];
 	JButton addButton,subButton,mulButton,divButton;
 	JButton decButton, equButton, delButton, clrButton;
-	JPanel panel;
+	JPanel panel, buttonPanel;
 	
 	Font myFont = new Font("Ink Free",Font.BOLD,30);
 	
@@ -47,7 +47,7 @@ public class Calculator implements ActionListener {
 		functionButtons[6] = delButton;
 		functionButtons[7] = clrButton;
 		
-		for(int i =0; i < 8;i++) {
+		for(int i = 0; i < 8;i++) {
 			functionButtons[i].addActionListener(this);
 			functionButtons[i].setFont(myFont);
 			functionButtons[i].setFocusable(false);
@@ -61,13 +61,17 @@ public class Calculator implements ActionListener {
 			numberButtons[i].setFocusable(false);
 		}
 		
-		delButton.setBounds(50, 430, 145, 50);
-		clrButton.setBounds(50, 430, 145, 50);
 		
 		panel = new JPanel();
 		panel.setBounds(50, 100, 300, 300);
 		panel.setLayout(new GridLayout(4,4,10,10));
 		//panel.setBackground(Color.GRAY);
+		buttonPanel = new JPanel();
+		buttonPanel.setBounds(50,430,300,50);
+		buttonPanel.setLayout(new GridLayout(1,2,10,0));
+		
+		buttonPanel.add(delButton);
+		buttonPanel.add(clrButton);
 		
 		panel.add(numberButtons[1]);
 		panel.add(numberButtons[2]);
@@ -88,11 +92,10 @@ public class Calculator implements ActionListener {
 		
 		
 		frame.add(panel);
-		frame.add(delButton);
-		frame.add(clrButton);
+		frame.add(buttonPanel);
 		frame.add(textfield);
 		frame.setVisible(true);
-    //del 또는 clr 버튼 하나만 표출됨..
+
 	}
 	
 	public static void main(String[] args) {
@@ -106,4 +109,3 @@ public class Calculator implements ActionListener {
 		
 	}
 }
-
